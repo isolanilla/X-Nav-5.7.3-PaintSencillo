@@ -1,10 +1,11 @@
 /* Asociamos función canvasApp a carga de página */
-window.addEventListener('load', canvasApp, false);	
+window.addEventListener('load', canvasApp, false);
 
-function canvasApp(){  
+function canvasApp(){
     /* Inicializamos el canvas */
 	var theCanvas = document.getElementById('canvas');
 	var context = theCanvas.getContext('2d');
+
 
     /* Inicializamos el valor del color */
 	var colorChosen = document.getElementById("color_chosen");
@@ -59,16 +60,16 @@ function canvasApp(){
     }
 
     function mouse_moved(ev) {
-	  var x, y;	
+	  var x, y;
 	  // Get the mouse position in the canvas
-	  x = ev.pageX;
-	  y = ev.pageY;
+	  x = ev.pageX  + $("#canvas")[0].offsetLeft
+	  y = ev.pageY - $("#canvas")[0].offsetTop
 
 	  if (begin_drawing) {
 	    context.beginPath();
-	    context.arc(x, y, 7, (Math.PI/180)*0, (Math.PI/180)*360, false);
+	    context.arc(x, y, 15, (Math.PI/180)*0, (Math.PI/180)*360, false);
 	    context.fill();
-        context.closePath();
+      context.closePath();
 	  }
     }
 }
